@@ -59,24 +59,29 @@ total.textContent = newSum
 }
 // // TASK 4 -- Add Guest to List
 
-var goodList = document.querySelectorAll('.good-standing-list li')
-var badList = document.querySelectorAll('.probation-list li')
+var goodList = document.querySelector('.good-standing-list')
+var badList = document.querySelector('.probation-list')
 var bothLists = document.querySelectorAll('li')
 
-for (var i = 0; i < bothLists.length; i++) {
-  bothLists[i].addEventListener('click', function(event){
-    for (var j = 0; j < goodList.length; j++){
-      if (goodList[j] === event.currentTarget) {
-      badList.parentNode.appendChild(event.currentTarget)
-    }
-    for (var k = 0; k < badList.length; k++){
-      if (badList[k] === event.currentTarget) {
-        goodList.parentNode.appendChild(event.currentTarget)
-        }
-      }
-    }
 
-})
-}
+for (var i = 0; i < bothLists.length; i++){
+  var nameInList = bothLists[i]
+   nameInList.addEventListener('click', function(){
+     var whichList = event.currentTarget.parentNode.className
+     if (whichList === goodList.className){
+       goodList.removeChild(event.currentTarget)
+       badList.appendChild(event.currentTarget)
+     }
+     else {
+       badList.removeChild(event.currentTarget)
+       goodList.appendChild(event.currentTarget)
+     }
+   })
+ }
+
+
+
+
+
 //
 // // TASK 5 -- (Adventure Mode)-- Add + Remove Item From List
